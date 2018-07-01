@@ -84,14 +84,14 @@ function wrongPassword(){
 }
 
 function welcome(){
-    insertChat("you", "Welcome to Robotutor!", 1500);
-    insertChat("you", "We are glad...", 3000);
-    insertChat("you", "to have you here!", 4000);
+    insertChat("you", "Robotutorga xush kelibsiz!", 1500);
+    insertChat("you", "Biz sizni...", 3000);
+    insertChat("you", "ko'rishdan xursandmiz!", 4000);
 }
 function logOut(){
     localStorage.removeItem("email");
     localStorage.removeItem("random_id");
-    insertChat("you", "We look forrward to seeing you again!",500);
+    insertChat("you", "Yana kelishingizni kutamiz!",500);
     setTimeout(function(){window.location.reload();}, 1700);
 }
 function isCommand(command){
@@ -121,9 +121,9 @@ function answer(request){
                     case '/clear':
                         resetChat();
                         break;
-                    case '/roll':
-                        alert("Doing a barel roll");
-                        break;
+                    // case '/roll':
+                    //     alert("Doing a barel roll");
+                    //     break;
                 }
             }
             else if (isCommand(request)) {
