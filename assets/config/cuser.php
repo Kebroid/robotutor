@@ -20,7 +20,7 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['fav_lang']) 
 	else if (isEmail($email)) {
 		$query = "INSERT INTO `users`(`username`, `email`, `fav_lang`, `password`, `random_id`) VALUES ('$name', '$email', '$fav_lang', '$password', '$random_id')";
 		$link->query($query);
-		header("Location: /");
+		header("Location: ../../");
 	} else {
 		echo "Are you sure it was a valid email? ;)";
 	}
