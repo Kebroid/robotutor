@@ -1,8 +1,8 @@
 <?php 
 	session_start();
 	require("./functions.php");
-	$login = ['Please sign in first!', 'I can\'t hear you unless you sign in!', 
-	'You are saying something <br>I do not understand', 'Please, Login First. I promise We\'ll have fun!'];
+	$login = ['Foydalanish uchun !', 'Kirmasangiz davom etaolmaymiz!', 
+	'Uzur, tushunmadim <br>siz bu yerga birinchi marta kelishizmi?', "Iltimos, oldin ro'yhatdan o'ting yoki kiring"];
 
 	
 
@@ -28,10 +28,10 @@
 		   			lifehack();
 		   			break;
 		   		case '/help':
-		   			echo "<b>Commands</b>:<br>/top<br>/joke<br>/friends<br>/lifehack<br>/logout";
+		   			echo "<b>Yordamchi buyruqlar</b>:<br>/top<br>/joke<br>/friends<br>/lifehack<br>/logout";
 		   			break;
 		   		default:
-		   			echo "No such command.<br> Type /help";
+		   			echo "Bunday buyruq mavjud emas.<br>/help deb yozing";
 		   			break;
 		   	}
 		}

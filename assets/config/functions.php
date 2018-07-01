@@ -4,14 +4,14 @@ function checkAnswer($level, $request){
     $link = new mysqli(HOST, USERNAME, PASSWORD, DATABASE);
     $result = $link->query("SELECT * FROM challenges") or die("could not");
 
-    $wrong = ["Wrong!", "You guessed wrong.",
-             "It is wrong answer for level $level",
-             "$request is wrong!"];
+    $wrong = ["Xato!", "Uzur, xato ekan.",
+             "Javobingiz $level-daraja javobiga to'g'ri kelmadi.",
+             "$request - xato!"];
 
-    $right = ["Congrats! You found the solution for Level $level", 
-             "Well done! You got one more in your friends list",
-             "That's correct!", "Wow, That was a nice try!",
-             "Cool, you are a step closer to Victory!"];
+    $right = ["Tabriklaymiz! Siz $level-datajadan muvafaqqiyatli o'tdingiz", 
+             "Barakalla! RoboTutordagi do'stlaringiz yana bittaga oshdi",
+             "To'g'ri topdingiz!", "Qoyilman! Aqlli ekansiz!",
+             "Zo'r, g'alabaga yana bir qadam qo'ydingiz!"];
 
     $quer = "SELECT solution FROM challenges WHERE id = $level";
     $quer_run = $link->query($quer);
@@ -39,7 +39,7 @@ function checkAnswer($level, $request){
             $link->query("UPDATE `tries` SET `tries_num`=`tries_num`+1 WHERE challenge_id = $level and user_id = $user_id");
         }
         $random = rand(0, count($wrong)-1); 
-        echo $wrong[$random]."<br>Try again!";
+        echo $wrong[$random]."<br>Yana urinib ko'ring!";
     }
 }
 /************************************************************/
@@ -63,7 +63,7 @@ function lifehack(){
 function getTop(){
     $link = new mysqli(HOST, USERNAME, PASSWORD, DATABASE);
     $result = $link->query("SELECT * FROM challenges") or die("could not");
-    $top = "<b>Top students:</b>";
+    $top = "<b>Yuqori natijalar:</b>";
     $quer = "SELECT username, level FROM users ORDER BY level DESC LIMIT 5";
     $quer_run = $link->query($quer);
      while ($quer_row = $quer_run->fetch_assoc()){
@@ -77,7 +77,7 @@ function getTop(){
 function listFriends($level){
     $link = new mysqli(HOST, USERNAME, PASSWORD, DATABASE);
     $result = $link->query("SELECT * FROM challenges") or die("could not");
-    $friends = "<b>You have $level friend(s)</b>";
+    $friends = "<b>Siz $level do'st(lar) ortirdingiz!</b>";
     $quer = "SELECT name FROM challenges WHERE id<$level";
     $quer_run = $link->query($quer);
      while ($quer_row = $quer_run->fetch_assoc()){
@@ -150,7 +150,7 @@ function init($level){
 }
 /************************************************************/
 function isEmail($email){
-    return true;
+    return filter_var($email, FILTER_VALIDATE_EMAIL);
 }
 /************************************************************/
 function emailExists($email){

@@ -19,7 +19,7 @@
 	        $_SESSION['level'] = $query_row['level'];
 	        $name = $_SESSION['name'];
 	        init($query_row['level']);
-	        echo "<script>resetChat();insertChat('you','Welcome back, $name!',1000)</script>";
+	        echo "<script>resetChat();insertChat('you','Qatganigiz bilan, $name!',1000)</script>";
 	    } if ($user==0) {
 	    	echo "<script>welcome()</script>";
 	    }
@@ -46,7 +46,7 @@
 	       	init($query_row['level']);
 	        echo "<script>".
 	       		 "localStorage.setItem('random_id', '$random_id');".
-	       		 "localStorage.setItem('email', '$email');resetChat();insertChat('you','Welcome $name!',1000)".
+	       		 "localStorage.setItem('email', '$email');resetChat();insertChat('you','Xush kelibsiz, $name!',1000)".
 	        	 "</script>";
 	    }
 	    if ($user==0) {
