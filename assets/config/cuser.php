@@ -6,7 +6,7 @@ require('./functions.php');
 if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['fav_lang']) && isset($_POST['password']) && !empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['fav_lang']) && !empty($_POST['password'])){
 
     $link = new mysqli(HOST, USERNAME, PASSWORD, DATABASE);
-    $result = $link->query("SELECT * FROM challenges") or die("could not");
+    $result = $link->query("SELECT * FROM challenges") or die("Ma'lumotlar bazasiga ulana olmadi");
 
 	$name = $link->real_escape_string($_POST['name']);
 	$email = $link->real_escape_string($_POST['email']);
@@ -15,18 +15,18 @@ if(isset($_POST['name']) && isset($_POST['email']) && isset($_POST['fav_lang']) 
 	$random_id = getRandomId();
 
 	if (emailExists($email)) {
-		echo "The email you provided already exists :(";
+		echo "$email allaqachon ro'yhatdan o'tgan :(";
 	}
 	else if (isEmail($email)) {
 		$query = "INSERT INTO `users`(`username`, `email`, `fav_lang`, `password`, `random_id`) VALUES ('$name', '$email', '$fav_lang', '$password', '$random_id')";
 		$link->query($query);
 		header("Location: ../../");
 	} else {
-		echo "Are you sure it was a valid email? ;)";
+		echo "Siz kiritgan email haqiqiyligiga ishonchingiz komilmi ? ;)";
 	}
 }
 else {
-	echo "Error Occured because you did not provide something asked :)";
+	echo "Siz yaxshi foydalanuvchi bo'lmadingiz, ma'lumotlar to'liq emas :(";
 }
 
 ?>
