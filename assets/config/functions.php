@@ -1,5 +1,5 @@
 <?php
-
+require('./constants.php');
 function checkAnswer($level, $request){
     $link = new mysqli(HOST, USERNAME, PASSWORD, DATABASE);
     $result = $link->query("SELECT * FROM challenges") or die("could not");
