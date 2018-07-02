@@ -1,5 +1,6 @@
 <?php 
 	session_start();
+	require('../assets/config/constants.php');
 	$link = new mysqli(HOST, USERNAME, PASSWORD, DATABASE);
     $result = $link->query("SELECT * FROM challenges") or die("could not");
 
@@ -14,7 +15,7 @@
 	    }
 	    echo $input;
 	} else {
-		echo "Please, sign in first!";
+		echo "Oldin kiring yoki ro'yhatdan o'ting!";
 	}
 
 ?>
